@@ -57,15 +57,15 @@ VALUES
 
 UPDATE cliente
 SET celular = '1355667756'
-WHERE idCliente = 4;
+WHERE idCliente = 3;
 
 UPDATE cliente
 SET celular = '44966778899'
-WHERE idCliente = 5;
+WHERE idCliente = 4;
 
 UPDATE cliente
 SET celular = '12944556677', email = 'PedroFonseca2@gmail.com'
-WHERE idCliente = 4;
+WHERE idCliente = 3;
 
 /* Busca com filtros */
 
@@ -86,7 +86,7 @@ ORDER BY nomeCliente;
 /* Excluir dados de determinada tabela */
 
 DELETE FROM cliente
-WHERE idCliente > 4 AND idCliente < 6;
+WHERE idCliente > 3 AND idCliente < 4;
 
 ALTER TABLE contatotelefonico
 MODIFY idContatoTelefonico INT NOT NULL AUTO_INCREMENT;
@@ -123,11 +123,13 @@ VALUES
 (1,'Bidu','Cachorro','Beagle',12.3,'M','M',2020),
 (2,'Penélope','Gato','Frajola',8.82,'M','F',2021),
 (2,'Tom','Gato','Frajola',9.22,'M','M',2019),
-(10,'Cofap','Cachorro','Basset',9.11,'P','M',2018);
+(4,'Cofap','Cachorro','Basset',9.11,'P','M',2018);
  
  SELECT * from animal
 
 /* FAZER OS VETERINARIOS*/
+
+SELECT * FROM veterinario 
 
 INSERT INTO veterinario
 (nomeVeterinario, crmv, celular, especialidade)
@@ -181,6 +183,7 @@ DELETE FROM animal
 WHERE nomeAnimal = 'Bidu'
 
 SELECT * FROM animal 
+SELECT * FROM consulta
 
 INSERT INTO consulta 
 (idAnimal, idVeterinario, datahora, pago, formaPagto, qtdVezes, valorTotal, valorPago)
@@ -196,19 +199,7 @@ NOW(),
 150.00
 );
 
-INSERT INTO consulta
-(idAnimal, idVeterinario, dataHora, pago, formaPagto, qtdVezes, valorTotal, valorPago)
-VALUES
-(
-(SELECT idAnimal FROM animal WHERE nomeAnimal = 'Bidu'),
-1,
-NOW(),
-1,
-'Pix',
-1,
-90.00,
-90.00
-);
+
 
 SELECT * FROM consultatiposervico
 SELECT * FROM tiposervico
@@ -216,15 +207,16 @@ SELECT * FROM tiposervico
 INSERT INTO consultatiposervico 
 ( idconsulta,idtipoServico, valorServico)
 VALUES
-(2,1,90.00);
-(1,3,150.00)
+(9,1,90.00);
+(10,3,150.00)
            /**/
-			  
+			  SELECT * FROM consulta 
 INSERT INTO consulta (idanimal, idVeterinario, datahora, pago, formapagto, qtdvezes, valortotal, valorpago)
 VALUES
 (13, 2, '2026-03-10 14:30:00', 0, 'Dinheiro', '0', 90.00, NULL),
 (14, 2, '2026-01-25 09:00:00', 1, 'Pix', '0', 150.00, 150.00), 
 (15, 2, '2026-03-29 18:00:00', 0, 'Crédito', '2', 300.00, NULL);
+
 INSERT INTO consultatiposervico (idconsulta,idtiposervico, valorservico)
 VALUES
 (3, 1, 90.00), 
@@ -260,7 +252,7 @@ values
 
 (9,'300.00',4),
 
-(10,'150.00',3);
+(10,'150.00',3)
                                  /**/
 SELECT consulta.dataHora,
 a.nomeAnimal,
@@ -273,6 +265,11 @@ INNER JOIN consulta
 ON a.idAnimal = consulta.idAnimal
 INNER JOIN veterinario
 ON consulta.idVeterinario = veterinario.idVeterinario 
+
+
+                                        /**/
+                                        
+
 
 
 

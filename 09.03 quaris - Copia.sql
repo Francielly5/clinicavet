@@ -441,39 +441,3 @@ ON consulta.idanimal = animal.idAnimal /* quando quero trazer apenas um da tabel
 GROUP BY nomeAnimal /* quando quer todos da tabela, trazendo tambem ON, sendo apenas para um da tabela ou para ter todos*/
 HAVING COUNT(idconsulta)>3
 ORDER BY  COUNT(idconsulta) DESC  
-
-                               /**********************************/
-                     SELECT * FROM animal
-
-/*Listar a quantidade de animais por espécie*/
-
-SELECT especie, COUNT(idanimal) AS 'Qtd'
-FROM animal 
-GROUP BY especie 
-
-                                /*******************************/
-                           
-/*Listar todas as cidades onde tenho clientes*/
-SELECT DISTINCT cidade FROM cliente 
-
-SELECT DISTINCT raca FROM animal 
-WHERE especie = 'cachorro'
-                                 /*********************************/
-                                 
-/*Paginação*/ 
-
-SELECT * FROM veterinario 
-ORDER BY idveterinario DESC  
-LIMIT 2
- 
-                            /*******************************/
-                            
-/*Paginação - Limitar quantidade de linhas*/
-
-SELECT * FROM veterinario
-LIMIT 3 
-
-
-
-
-
